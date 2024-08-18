@@ -26,4 +26,4 @@ rolex-*.tar
 /tmp/
 
 # Secret env
-/config/.env.exs
+.env

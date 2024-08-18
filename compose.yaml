@@ -1,0 +1,5 @@
+services:
+  rolex:
+    build: .
+    environment:
+      ROLEX_TOKEN: ${ROLEX_TOKEN}

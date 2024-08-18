@@ -22,7 +22,8 @@ defmodule Rolex.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:nostrum, "~> 0.10"}
+      {:nostrum, "~> 0.10"},
+      {:dotenv_parser, "~> 2.0"}
     ]
   end
 end
