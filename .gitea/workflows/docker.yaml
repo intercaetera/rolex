@@ -11,7 +11,7 @@ jobs:
         uses: docker/login-action@v2
         with:
           registry: git.jerusalem.home
-          username: ${{ secrets.REGISTRY_USERNAME }}
+          username: justinian
           password: ${{ secrets.REGISTRY_PASSWORD }}
 
       -
