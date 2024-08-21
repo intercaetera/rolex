@@ -62,3 +62,5 @@ jobs:
 
     - name: Run tests
       run: mix test
+      env:
+        ROLEX_TOKEN: ${{ secrets.ROLEX_TOKEN }}
