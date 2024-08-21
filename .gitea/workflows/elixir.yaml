@@ -65,3 +65,20 @@ jobs:
       env:
         ROLEX_TOKEN: ${{ secrets.ROLEX_TOKEN }}
 
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      -
+        name: Login to Gitea Registry
+        uses: docker/login-action@v2
+        with:
+          registry: git.jerusalem.home
+          username: justinian
+          password: ${{ secrets.REGISTRY_PASSWORD }}
+
+      -
+        name: Build and push
+        uses: docker/build-push-action@v6
+        with:
+          push: true
+          tags: git.jerusalem.home/justinian/rolex:latest
