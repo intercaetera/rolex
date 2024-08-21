@@ -19,4 +19,4 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           push: true
-          tags: justinian/rolex:latest
+          tags: git.jerusalem.home/justinian/rolex:latest
