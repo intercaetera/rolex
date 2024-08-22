@@ -52,7 +52,7 @@ defmodule RolexBot.Consumer do
     message =
       case do_command(interaction) do
         {:msg, nil} -> ":white_check_mark:"
-        {:msg, msg} -> "Reply: #{msg}"
+        {:msg, msg} -> "Replying: #{msg}"
         _ -> ":white_check_mark:"
       end
 
