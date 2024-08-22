@@ -78,7 +78,7 @@ defmodule RolexBot.Consumer do
   def do_command(%{data: %{name: "giverole"}} = interaction) do
     language = interaction |> parse_args() |> Map.get("language")
 
-    case Rolex.Languages.get_language(language) do
+    case Rolex.LanguagesAgent.get_language(language) do
       nil -> {:msg, "Language not found."}
       %{"color" => color} -> {:msg, "The colour for your language is #{color}" }
     end

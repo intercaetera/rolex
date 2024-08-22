@@ -4,6 +4,7 @@ defmodule Rolex.Application do
   def start(_type, _args) do
     children = [
       RolexBot.Consumer,
+      Rolex.LanguagesAgent
     ]
 
     opts = [strategy: :one_for_one, name: Rolex.Supervisor]
