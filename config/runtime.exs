@@ -9,5 +9,6 @@ token = System.get_env("ROLEX_TOKEN")
 config :nostrum,
   token: token,
   youtubedl: nil,
-  streamlink: nil
+  streamlink: nil,
+  ffmpeg: nil
 
