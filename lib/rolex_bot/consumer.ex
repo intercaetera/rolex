@@ -1,12 +1,14 @@
-defmodule Rolex.Consumer do
+defmodule RolexBot.Consumer do
   use Nostrum.Consumer
 
   alias Nostrum.Api
 
-
-  @string 3 # Interaction argument type
-  @ephemeral 64 # Flag bitset
-  @channel_message 4 # Interaction response type
+  # Interaction argument type
+  @string 3
+  # Flag bitset
+  @ephemeral 64
+  # Interaction response type
+  @channel_message 4
 
   @commands [
     {"ping", "Pong!",
@@ -16,6 +18,16 @@ defmodule Rolex.Consumer do
          name: "reply",
          description: "reply with",
          required: false
+       }
+     ]},
+    {"giverole",
+     "Gives you a role signifying you're interested in a specific programming language.",
+     [
+       %{
+         type: @string,
+         name: "language",
+         description: "Language name",
+         required: true
        }
      ]}
   ]
@@ -56,10 +68,25 @@ defmodule Rolex.Consumer do
 
   def do_command(%{data: %{name: "ping"}} = interaction) do
     reply =
-      (interaction.data.options || [])
-      |> Enum.find(%{}, fn o -> o.name == "reply" end)
-      |> Map.get(:value)
+      interaction
+      |> parse_args()
+      |> Map.get("reply")
 
     {:msg, reply}
+  end
+
+  def do_command(%{data: %{name: "giverole"}} = interaction) do
+    language = interaction |> parse_args() |> Map.get("language")
+
+    case Rolex.Languages.get_language(language) do
+      nil -> {:msg, "Language not found."}
+      %{"color" => color} -> {:msg, "The colour for your language is #{color}" }
+    end
+  end
+
+  defp parse_args(%{data: %{options: options}} = _interaction) do
+    options
+    |> Enum.map(fn %{name: name, value: value} -> {name, value} end)
+    |> Map.new()
   end
 end

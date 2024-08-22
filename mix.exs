@@ -23,7 +23,8 @@ defmodule Rolex.MixProject do
   defp deps do
     [
       {:nostrum, "~> 0.10"},
-      {:dotenv_parser, "~> 2.0"}
+      {:dotenv_parser, "~> 2.0"},
+      {:jason, "~> 1.4"}
     ]
   end
 end
