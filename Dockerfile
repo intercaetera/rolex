@@ -13,6 +13,7 @@ WORKDIR /app
 COPY mix.exs mix.lock ./
 COPY config config
 COPY lib lib
+COPY priv priv
 
 RUN mix do deps.get --only ${MIX_ENV}, deps.compile
 ENV PATH="/root/.mix/escripts:${PATH}"
@@ -31,5 +32,6 @@ EXPOSE 5000
 
 WORKDIR /app
 COPY --from=builder /app/_build/${MIX_ENV}/rel/rolex ./
+COPY priv priv
 
 CMD ["sh", "-c", "/app/bin/rolex start"]
