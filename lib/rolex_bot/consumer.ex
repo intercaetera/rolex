@@ -81,7 +81,7 @@ defmodule RolexBot.Consumer do
     reply =
       interaction
       |> parse_args()
-      |> Map.get("reply")
+      |> Map.get("reply", "Pong!")
 
     {:msg, reply}
   end
@@ -124,6 +124,7 @@ defmodule RolexBot.Consumer do
     end
   end
 
+  defp parse_args(%{data: %{options: nil}}), do: %{}
   defp parse_args(%{data: %{options: options}} = _interaction) do
     options
     |> Enum.map(fn %{name: name, value: value} -> {name, value} end)
