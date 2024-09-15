@@ -99,7 +99,7 @@ defmodule RolexBot.Consumer do
            ) do
       {:msg, "Successfully assigned role #{language}."}
     else
-      nil -> "Language not found. Remember that names are case-sensitive."
+      nil -> {:msg, "Language not found. Remember that names are case-sensitive."}
       {:error, error} -> {:msg, error}
       _ -> {:msg, "Something went wrong."}
     end
@@ -118,7 +118,7 @@ defmodule RolexBot.Consumer do
            ) do
       {:msg, "Successfully removed role #{language}."}
     else
-      nil -> "Language not found. Remember that names are case-sensitive."
+      nil -> {:msg, "Language not found. Remember that names are case-sensitive."}
       {:error, error} -> {:msg, error}
         _ -> {:msg, "Something went wrong."}
     end
