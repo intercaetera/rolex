@@ -3,11 +3,11 @@ defmodule Rolex.Application do
 
   def start(_type, _args) do
     children = [
-      {RolexBot.Consumer, name: RolexBot.Consumer, restart: :permanent},
+      RolexBot.Consumer,
       Rolex.LanguagesAgent
     ]
 
-    opts = [strategy: :one_for_one, name: Rolex.Supervisor, max_restarts: 10, max_seconds: 60]
+    opts = [strategy: :one_for_one, name: Rolex.Supervisor]
 
     Supervisor.start_link(children, opts)
   end
