@@ -68,7 +68,7 @@ jobs:
     - name: Login to Gitea Registry
       uses: docker/login-action@v2
       with:
-        registry: git.jerusalem.home
+        registry: git.jerusalem.ovh
         username: justinian
         password: ${{ secrets.REGISTRY_PASSWORD }}
 
@@ -76,4 +76,4 @@ jobs:
       uses: docker/build-push-action@v6
       with:
         push: true
-        tags: git.jerusalem.home/justinian/rolex:latest
+        tags: git.jerusalem.ovh/justinian/rolex:latest
